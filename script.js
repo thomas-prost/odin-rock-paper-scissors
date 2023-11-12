@@ -16,3 +16,4 @@ console.log(getComputerChoice[randomComputerChoice]);
 let getUserChoice = prompt("Rock, Paper or Scissors?");
 let cleanUserChoice = getUserChoice.toLowerCase();
 console.log(cleanUserChoice);
+
