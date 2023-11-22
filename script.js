@@ -15,6 +15,13 @@ const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
 
+const roundResult = document.querySelector(".roundResult");
+const roundPara = document.querySelector(".roundPara");
+
+roundResult.style.cssText = "background-color: black; display: block;";
+roundPara.style.cssText = "color: white";
+roundPara.textContent = "Please select one of the options.";
+
 rock.addEventListener("click", () => {
     playerSelection = "rock";
     playRound();
@@ -41,18 +48,13 @@ updateScores();
 
 function playRound() {
     
-    const roundResult = document.querySelector(".roundResult");
-    const roundPara = document.querySelector(".roundPara");
-    
-    const matchResult = document.querySelector(".matchResult");
-    const matchPara = document.querySelector(".matchPara");
-    
     let getComputerChoice = ['rock', 'paper', 'scissors']; 
     let randomComputerChoice = String(Math.floor(Math.random() * getComputerChoice.length));
     let computerSelection = getComputerChoice[randomComputerChoice];
     
     if (computerSelection == playerSelection) {
         roundResult.style.cssText = "background-color: grey; display: block;";
+        roundPara.style.cssText = "color: white";
         roundPara.textContent = "Equality! You both chose " + computerSelection;
         roundNumber += 1;
     }
@@ -61,31 +63,46 @@ function playRound() {
     computerSelection == "scissors" && playerSelection == "paper") {
         computerScore += 1 ;
         roundResult.style.cssText = "background-color: brown; display: block;";
+        roundPara.style.cssText = "color: white";
         roundPara.textContent = "You lost... " + computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1) + " beats " + playerSelection + "...";
         roundNumber += 1;
     }
     else {
         roundResult.style.cssText = "background-color: green; display: block;";
+        roundPara.style.cssText = "color: white";
         roundPara.textContent = "You won! " + playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1) + " beats " + computerSelection + "!";
         playerScore += 1;
         roundNumber += 1;
     }
+    
     updateScores();
     
-    if (playerScore == 5) {
-        matchResult.style.cssText = "background-color: green; display: block;";
-        matchPara.textContent = "Match " + matchNumber + ": You won " + playerScore + " to " + computerScore + "!";
-        playerScore = 0;
-        computerScore = 0;
-        roundNumber = 1
-        matchNumber += 1;
-    } else if (computerScore == 5) {
-        matchResult.style.cssText = "background-color: brown; display: block;";
-        matchPara.textContent = "Match " + matchNumber + ": You lost " + playerScore + " to " + computerScore + "...";
+    function resetScore() {
         playerScore = 0;
         computerScore = 0;
         roundNumber = 1;
         matchNumber += 1;
+    };
+    
+    const matchResult = document.querySelector(".matchResult");
+    const matchPara = document.querySelector(".matchPara");
+
+    const matchHistory = document.createElement("div");
+    
+    if (playerScore == 5) {
+        matchPara.classList.add("victory");
+        matchPara.textContent = "Match " + matchNumber + ": You won " + playerScore + " to " + computerScore + "!";
+        matchResult.style.cssText = "display: block";
+        matchHistory.classList.add("matchPara", "counter");
+        matchResult.insertBefore(matchHistory, matchPara);
+        resetScore();
+    } else if (computerScore == 5) {
+        matchPara.classList.add("defeat");
+        matchPara.textContent = "Match " + matchNumber + ": You lost " + playerScore + " to " + computerScore + "...";
+        matchResult.style.cssText = "display: block";
+        matchHistory.classList.add("matchPara", "counter");
+        matchResult.insertBefore(matchHistory, matchPara);
+        resetScore();
     }
 }
 

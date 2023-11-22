@@ -1,5 +1,6 @@
 * {
     font-family: Helvetica, Arial, sans-serif;
+    font-weight: 600;
     color: white;
 }
 
@@ -10,30 +11,44 @@ body {
 .container-flex {
     display: flex;
     gap: 10px;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
-.counter {
+.counter,
+.match-para {
     color: white;
     font-family: Rand Mono, Menlo, Monaco, 'Courier New', monospace;
-    font-size: 14px;;
+    font-size: 14px;
+}
+
+h1 {
+}
+
+img {
+    max-width:100%;
+    mix-blend-mode: multiply;
 }
 
 button {
     color: black;
     background-color: white;
     border: none;
-    padding: 15px;
-    border-radius: 10px;
+    padding: 10px;
+    
     flex: 1;
+    flex-shrink: 1;
     font-size: 14px;
 }
 
-.roundPara,
-.matchPara {
+button:hover {
+    cursor: pointer;
+    background-color: rgb(200, 200, 200);
+}
+
+.roundPara {
     color: black;
     border: none;
-    padding: 15px;
+    padding: 10px;
     flex: 1;
     text-align: center;
     font-size: 14px;
@@ -42,6 +57,34 @@ button {
 .roundResult,
 .matchResult {
     display: none;
-    background-color: red;
-    border-radius: 10px;
+    
+}
+
+.matchResult {
+    margin-top: 10px;
+}
+
+.victory,
+.defeat {
+    display: block;
+}
+
+.victory {
+    color: green;
+}
+
+.defeat {
+    color: brown;
+}
+
+.matchLog {
+    margin-top: 10px;
+    
+    background-color: lightgray;
+    padding: 10px;
+}
+
+p {
+    margin-top: 0px;
+    color: black !important;
 }

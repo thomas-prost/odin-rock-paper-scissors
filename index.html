@@ -10,25 +10,38 @@
     
     <h1>Welcome to the Rock Paper Scissors game!</h1>
     
+    <div class="counter rule">First one to 5 points wins the match.</div>
+    <br>
     <div class="counter matchCounter"></div>
     <div class="counter roundCounter"></div>
     <div class="counter playerScoreCounter"></div>
     <div class="counter computerScoreCounter"></div>
-
+    
     <div class="container-flex">
-        <button id="rock">Rock</button>
-        <button id="paper">Paper</button>
-        <button id="scissors">Scissors</button>
+        <button id="rock">
+            <img src="img/rock.png" alt="A rock"><br>
+            Rock
+        </button>
+        <button id="paper">
+            <img src="img/paper.png" alt="Some paper."><br>
+            Paper
+        </button>
+        <button id="scissors">
+            <img src="img/cutter.png" alt="A cutter."><br>
+            Scissors
+        </button>
     </div>
     
     <div class="container-flex roundResult">
         <div class="roundPara"></div>    
     </div>
-
-    <div class="container-flex matchResult">
-        <div class="matchPara"></div>
+    
+    <div class="matchLog">
+        <p class="counter">Match Log</p>
+        <div class="matchResult">
+            <div class="matchPara counter"></div>
+        </div>
     </div>
-
     <script src="script.js"></script>
     
 </body>
